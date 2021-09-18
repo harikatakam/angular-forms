@@ -2,7 +2,10 @@
 
 .form-wrapper {
   border-top: solid 8px;
-  border-color: rgb(7, 206, 7);;
+  border-color: rgb(7, 206, 7);
+  &.error-form {
+    border-color: rgb(206, 7, 7);
+  }
   display: flex; justify-content: center; align-items: center;
   flex-direction: column;
   border-radius: 4px;
@@ -14,8 +17,13 @@
 
   p {
     input, select {
-      margin-left: 1rem;
+      margin-left: 1.5rem;
     }
+  }
+
+  .errorMessage {
+    color: red;
+    margin-left: .5rem;
   }
 }
 

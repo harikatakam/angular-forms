@@ -1,10 +1,13 @@
-<div class = 'form-wrapper'>
+<div class = 'form-wrapper' [ngClass] ='{"error-form": !contactForm.valid && contactForm.touched}'>
   <h2>Reactive forms Example</h2>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
     <p>
       <label for="firstname">First Name </label>
       <input type="text" id="firstname" name="firstname" formControlName="firstname">
+      <span class="errorMessage" *ngIf = "contactForm.get('firstname')?.errors?.required">First Name is Mandatory</span>
+      <span class="errorMessage" *ngIf = "contactForm.get('firstname')?.errors?.minlength">Min length is 5 letters</span>
+
     </p>
 
     <p>
@@ -15,6 +18,9 @@
     <p>
       <label for="email">Email </label>
       <input type="text" id="email" name="email" formControlName="email">
+      <span class="errorMessage" *ngIf = "contactForm.controls.email.touched && contactForm.get('email')?.errors?.required">Email is Mandatory</span>
+      <span class="errorMessage" *ngIf = "contactForm.controls.email.touched && contactForm.controls.email.errors?.pattern">Invalid email</span>
+
     </p>
 
     <p>
@@ -59,15 +65,9 @@
     </div>
 
     <p>
-      <button type="submit">Submit</button>
-      <button class="ml-2" type="button" (click)= 'loadWithDefaultValue()'>Load form with default values</button>
-      <button class="ml-2" type="button" (click)= 'setForm()'>Set form Value</button>
-      <button class="ml-2" type="button" (click)= 'setFirstName()'>Set First Name</button>
-      <button class="ml-2" type="button" (click)= 'setlastName()'>Set Last Name</button>
+      <button type="submit" [disabled] = '!contactForm.valid'>Submit</button>
     </p>
     <p>
-      <button class="ml-2" type="button" (click)= 'patchAddress()'>Patch Address</button>
-      <button class="ml-2" type="button" (click)= 'setAddress()'>Set Address</button>
       <button class="ml-2" type="button" (click)= 'resetFrom()'>Rest Form</button>
     </p>
 

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { country } from '../template-form/template-form.component';
 
 @Component({
-  selector: 'app-reactive-form-builder',
+  selector: 'app-reactive-form-validations',
   templateUrl: './reactive-form-builder.component.html',
   styleUrls: ['./reactive-form-builder.component.scss']
 })
-export class ReactiveFormBuilderComponent implements OnInit {
+export class ReactiveFormBuilderValidationsComponent implements OnInit {
 
   contactForm!: FormGroup;
   countryList: country[] = [
@@ -21,9 +21,9 @@ export class ReactiveFormBuilderComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = this.formBuilder.group({
-      firstname: [''],
+      firstname: ['', [Validators.required, Validators.minLength(5)]],
       lastname: [''],
-      email: [''],
+      email: ['', [Validators.required, Validators.pattern(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
       gender: [''],
       isMarried: [''],
       country: [''],
@@ -33,7 +33,9 @@ export class ReactiveFormBuilderComponent implements OnInit {
         pincode: ['']
       }
       )
-    });
+    }
+    // , { updateOn: 'submit'}
+    );
 
     this.contactForm.valueChanges.subscribe(val => {
       console.log('form Value changed!!')
@@ -58,23 +60,6 @@ export class ReactiveFormBuilderComponent implements OnInit {
 
   onSubmit() {
     console.log(this.contactForm.value);
-  }
-
-  loadWithDefaultValue() {
-    this.contactForm = this.formBuilder.group({
-      firstname: ['Hari'],
-      lastname: ['Katakam'],
-      email: ['h.h@,com'],
-      gender: ['male'],
-      isMarried: [true],
-      country: [''],
-      address: this.formBuilder.group({
-        city: ['Hyderabad'],
-        street: [''],
-        pincode: ['']
-      }
-      )
-    });
   }
 
   setFirstName() {
