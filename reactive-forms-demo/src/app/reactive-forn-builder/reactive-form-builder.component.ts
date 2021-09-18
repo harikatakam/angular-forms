@@ -36,7 +36,7 @@ export class ReactiveFormBuilderComponent implements OnInit {
     });
 
     this.contactForm.get('isMarried')?.valueChanges.subscribe(val => {
-      if(val) {
+      if (val) {
         this.countryList = [
           new country("1", "India"),
           new country('2', 'USA'),
@@ -78,5 +78,36 @@ export class ReactiveFormBuilderComponent implements OnInit {
   }
   resetFrom() {
     this.contactForm.reset();
+  }
+
+  setForm() {
+    this.contactForm.setValue({
+      "firstname": "Hari",
+      "lastname": "Prasad",
+      "email": "katakam.hari@yahoo.com",
+      "gender": "male",
+      "isMarried": true,
+      "country": "2",
+      "address": {
+        "city": "wanaparthy",
+        "street": "vallab Nagar",
+        "pincode": "509103"
+      }
+    })
+  }
+
+  patchAddress() {
+
+    this.contactForm?.get('address')?.patchValue({
+      city: "Hyderabad",
+      street: "Madhapur"
+    });
+  }
+
+  setAddress() {
+    this.contactForm?.get('address')?.setValue({
+      city: "Hyderabad",
+      street: "Madhapur"
+    });
   }
 }
