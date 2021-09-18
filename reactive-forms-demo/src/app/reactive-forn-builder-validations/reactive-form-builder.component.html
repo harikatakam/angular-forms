@@ -24,6 +24,13 @@
     </p>
 
     <p>
+      <label for="sid">SID </label>
+      <input type="text" id="sid" name="sid" formControlName="sid">
+      <span class="errorMessage" *ngIf = "contactForm.controls.sid.touched && contactForm.controls.sid.errors">Invalid SID</span>
+
+    </p>
+
+    <p>
       <label for="gender">Geneder </label>
       <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
       <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female

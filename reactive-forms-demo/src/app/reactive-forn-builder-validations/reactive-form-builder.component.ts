@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { sidValidator } from '../sid.validator';
 import { country } from '../template-form/template-form.component';
 
 @Component({
@@ -27,6 +28,7 @@ export class ReactiveFormBuilderValidationsComponent implements OnInit {
       gender: [''],
       isMarried: [''],
       country: [''],
+      sid:['', [sidValidator]],
       address: this.formBuilder.group({
         city: [''],
         street: [''],
