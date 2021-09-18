@@ -1,4 +1,4 @@
-<div class="form-wrapper">
+<div class = 'form-wrapper'>
   <h2>Reactive forms Example</h2>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
@@ -41,17 +41,17 @@
     <div style="margin-left: 30px;"
     formGroupName="address">
 
-      <div class="form-group">
+      <div class="form-group mt-2">
           <label for="city">City</label>
           <input type="text" class="form-control" name="city" formControlName="city" >
       </div>
 
-      <div class="form-group">
+      <div class="form-group mt-2">
           <label for="street">Street</label>
           <input type="text" class="form-control" name="street" formControlName="street" >
       </div>
 
-      <div class="form-group">
+      <div class="form-group mt-2">
           <label for="pincode">Pin Code</label>
           <input type="text" class="form-control" name="pincode" formControlName="pincode">
       </div>
@@ -60,6 +60,7 @@
 
     <p>
       <button type="submit">Submit</button>
+      <button class="ml-2" type="button" (click)= 'loadWithDefaultValue()'>Load form with degault view</button>
     </p>
 
   </form>
