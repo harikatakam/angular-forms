@@ -13,7 +13,9 @@ export class ReactiveFormBuilderComponent implements OnInit {
   countryList: country[] = [
     new country("1", "India"),
     new country('2', 'USA'),
-    new country('3', 'England')
+    new country('3', 'England'),
+    new country('4', 'Srilanka'),
+    new country('5', 'S.A')
   ];
   constructor(private formBuilder: FormBuilder) { }
 
@@ -32,6 +34,22 @@ export class ReactiveFormBuilderComponent implements OnInit {
       }
       )
     });
+
+    this.contactForm.get('isMarried')?.valueChanges.subscribe(val => {
+      if(val) {
+        this.countryList = [
+          new country("1", "India"),
+          new country('2', 'USA'),
+          new country('3', 'England')
+        ];
+      } else {
+        this.countryList = [
+          new country("1", "India"),
+          new country('4', 'Srilanka'),
+          new country('5', 'S.A')
+        ];
+      }
+    })
   }
 
   onSubmit() {
@@ -53,5 +71,12 @@ export class ReactiveFormBuilderComponent implements OnInit {
       }
       )
     });
+  }
+
+  setFirstName() {
+    this.contactForm.get('firstname')?.setValue('set value by accessing form control');
+  }
+  resetFrom() {
+    this.contactForm.reset();
   }
 }
