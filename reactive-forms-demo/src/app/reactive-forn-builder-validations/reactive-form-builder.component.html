@@ -26,7 +26,7 @@
     <p>
       <label for="sid">SID </label>
       <input type="text" id="sid" name="sid" formControlName="sid">
-      <span class="errorMessage" *ngIf = "contactForm.controls.sid.touched && contactForm.controls.sid.errors">Invalid SID</span>
+      <span class="errorMessage" *ngIf = "contactForm.controls.sid.dirty && contactForm.controls.sid.errors?.invalid">Invalid SID</span>
 
     </p>
 
