@@ -7,6 +7,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveBasicComponent } from './reactive-basic/reactive-basic.component';
 import { ReactiveFormBuilderComponent } from './reactive-forn-builder/reactive-form-builder.component';
 import { ReactiveFormBuilderValidationsComponent } from './reactive-forn-builder-validations/reactive-form-builder.component';
+import { MyTextBoxComponent } from './my-text-box/my-text-box.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReactiveFormBuilderValidationsComponent } from './reactive-forn-builder
     TemplateFormComponent,
     ReactiveBasicComponent,
     ReactiveFormBuilderComponent,
-    ReactiveFormBuilderValidationsComponent
+    ReactiveFormBuilderValidationsComponent,
+    MyTextBoxComponent
   ],
   imports: [
     BrowserModule,
